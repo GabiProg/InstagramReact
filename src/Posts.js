@@ -1,4 +1,20 @@
+import React from "react";
+
 function PostItems(props){
+  const [name, setName] = React.useState("heart-outline");
+
+  function like(click){
+    if(click === "post"){
+      setName("heart");
+    }
+  }
+
+function dislike(takeoff){
+  if(takeoff === "heart"){
+    setName("heart-outline");
+  }
+}
+
   return (
     <div class="post">
             <div class="topo">
@@ -11,14 +27,14 @@ function PostItems(props){
               </div>
             </div>
 
-            <div class="conteudo">
+            <div onClick={() =>like("post")} class="conteudo">
               <img src={props.image2}/>
             </div>
 
             <div class="fundo">
               <div class="acoes">
                 <div>
-                  <ion-icon name="heart-outline"></ion-icon>
+                  <ion-icon onClick={() => dislike("heart")} name={name}></ion-icon>
                   <ion-icon name="chatbubble-outline"></ion-icon>
                   <ion-icon name="paper-plane-outline"></ion-icon>
                 </div>
@@ -57,6 +73,7 @@ const itensPost = [
     totalcurtidas:"99.159"
   }
 ];
+
 
     return (
         <div class="posts">
